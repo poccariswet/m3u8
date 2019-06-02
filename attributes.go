@@ -226,7 +226,8 @@ type Playlist struct {
 	live                  bool
 	Discontinty           bool // EXT-X-DISCONTINUITY encoding discontinuity between the media segment that follows it and the one that preceded it.
 
-	Segments []PlaylistSegment
+	Segments   []PlaylistSegment
+	hasVersion bool
 }
 
 // state of m3u and temporary store segments, stream inf...etc
