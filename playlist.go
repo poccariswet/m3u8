@@ -47,8 +47,9 @@ func (p *Playlist) String() string {
 		}
 	}
 
-	// TODO: write string Segments tags
-	// TODO: if platlist is not live, write end tag
+	if !p.live && !p.Master() {
+		b.WriteString(ExtENDList)
+	}
 
 	return b.String()
 }
