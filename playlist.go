@@ -18,7 +18,6 @@ func (p *Playlist) Master() bool {
 	return p.master
 }
 
-// TODO display playlist contents
 func (p *Playlist) String() string {
 	var b strings.Builder
 
@@ -45,6 +44,10 @@ func (p *Playlist) String() string {
 		if p.AllowCache {
 			b.WriteString(ExtAllowCache + "\n")
 		}
+	}
+
+	for _, v := range p.Segments {
+		b.WriteString(v.String() + "\n")
 	}
 
 	if !p.live && !p.Master() {
