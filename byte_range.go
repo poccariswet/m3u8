@@ -1,6 +1,7 @@
 package m3u8
 
 import (
+	"fmt"
 	"strconv"
 	"strings"
 
@@ -44,5 +45,5 @@ func NewByteRange(line string) (*ByteRangeSegment, error) {
 }
 
 func (bs *ByteRangeSegment) String() string {
-	return "ByteRangeSegment"
+	return fmt.Sprintf("%d@%d\n", bs.Length, bs.Offset)
 }
