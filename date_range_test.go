@@ -1,7 +1,6 @@
 package m3u8_test
 
 import (
-	"fmt"
 	"testing"
 	"time"
 
@@ -40,6 +39,4 @@ func TestDateRange(t *testing.T) {
 	assert.Equal(t, expectedEndDate, dr.EndDate)
 
 	assert.Equal(t, line+"\n", dr.String())
-
-	fmt.Println(dr)
 }
