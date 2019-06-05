@@ -45,5 +45,5 @@ func NewByteRange(line string) (*ByteRangeSegment, error) {
 }
 
 func (bs *ByteRangeSegment) String() string {
-	return fmt.Sprintf("%d@%d\n", bs.Length, bs.Offset)
+	return fmt.Sprintf("%d@%d", bs.Length, bs.Offset)
 }

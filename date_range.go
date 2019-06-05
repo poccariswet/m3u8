@@ -113,5 +113,5 @@ func (ds *DateRangeSegment) String() string {
 		s = append(s, fmt.Sprintf("%s=YES", ENDONNEXT))
 	}
 
-	return fmt.Sprintf("%s:%s\n", ExtDateRange, strings.Join(s, ","))
+	return fmt.Sprintf("%s:%s", ExtDateRange, strings.Join(s, ","))
 }
