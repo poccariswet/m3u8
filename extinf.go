@@ -10,8 +10,9 @@ import (
 func NewExtInf(line string) (*InfSegment, error) {
 	/*
 		type InfSegment struct {
-			Duration float64
-			URI      string
+			Duration  float64
+			URI       string
+			ByteRange *ByteRangeSegment
 		}
 	*/
 	val := line[len(EXTINF+":"):]

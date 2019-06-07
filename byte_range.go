@@ -11,8 +11,9 @@ import (
 func NewByteRange(line string) (*ByteRangeSegment, error) {
 	/*
 		type ByteRangeSegment struct {
-			Length int64
-			Offset int64
+			Length  int64
+			Offset  int64
+			Extflag bool
 		}
 	*/
 	if len(line) == 0 {

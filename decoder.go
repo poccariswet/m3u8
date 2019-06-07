@@ -113,8 +113,14 @@ func decodeLine(p *Playlist, line string, s *States) error {
 		if err != nil {
 			return errors.Wrap(err, "new byte range err")
 		}
-		if m, has := s.segment.(*MapSegment); has != false {
+		br.Extflag = true
+		if m, has := s.segment.(*MapSegment); has {
 			m.ByteRange = br
+			s.segment = m
+			br.Extflag = false
+		} else if inf, has := s.segment.(*InfSegment); has {
+			inf.ByteRange = br
+			s.segment = inf
 		}
 	case strings.HasPrefix(line, ExtMap):
 		m, err := NewMap(line)

@@ -160,14 +160,16 @@ type DateRangeSegment struct {
 }
 
 type ByteRangeSegment struct {
-	Length int64 // the length of the sub-range in bytes
-	Offset int64 // a byte offset from the beginning of the resource
+	Length  int64 // the length of the sub-range in bytes
+	Offset  int64 // a byte offset from the beginning of the resource
+	Extflag bool  // whether EXT-BYTERANGE or BYTERANGE
 }
 
 // #EXTINF attribute and, under uri
 type InfSegment struct {
-	Duration float64
-	URI      string
+	Duration  float64
+	URI       string
+	ByteRange *ByteRangeSegment
 }
 
 // #EXT-X-STREAM-INF or EXT-X-I-FRAME-STREAM-INF attributes
