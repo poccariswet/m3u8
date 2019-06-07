@@ -46,5 +46,8 @@ func NewByteRange(line string) (*ByteRangeSegment, error) {
 }
 
 func (bs *ByteRangeSegment) String() string {
+	if bs.Extflag {
+		return fmt.Sprintf("%s:%d@%d", ExtByteRange, bs.Length, bs.Offset)
+	}
 	return fmt.Sprintf("%d@%d", bs.Length, bs.Offset)
 }
