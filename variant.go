@@ -124,12 +124,12 @@ func (vs *VariantSegment) String() string {
 		s = append(s, fmt.Sprintf(`%s="%s"`, SUBTITLES, vs.Subtitle))
 	}
 
-	if vs.URI != "" {
-		s = append(s, fmt.Sprintf(`%s="%s"`, URI, vs.URI))
-	}
-
 	if vs.IFrame {
+		if vs.URI != "" {
+			s = append(s, fmt.Sprintf(`%s="%s"`, URI, vs.URI))
+		}
+
 		return fmt.Sprintf("%s:%s", ExtFrameStreamInf, strings.Join(s, ","))
 	}
-	return fmt.Sprintf("%s:%s", ExtStreamInf, strings.Join(s, ","))
+	return fmt.Sprintf("%s:%s\n%s", ExtStreamInf, strings.Join(s, ","), vs.URI)
 }

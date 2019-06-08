@@ -9,16 +9,17 @@ import (
 )
 
 func TestVariant(t *testing.T) {
-	line := `#EXT-X-STREAM-INF:AVERAGE-BANDWIDTH=305152,BANDWIDTH=435408,
+	line := `#EXT-X-I-FRAME-STREAM-INF:AVERAGE-BANDWIDTH=305152,BANDWIDTH=435408,
 AUDIO="sample",VIDEO="sample",CODECS="mp4a.40.2",
 RESOLUTION=1280x720,FRAME-RATE=24.001,CLOSED-CAPTIONS=NONE,
 PROGRAM-ID=1,NAME="1280p",HDCP-LEVEL=TYPE-0,SUBTITLES="sample.subs",URI="sample.url"`
 
-	l := line[len(m3u8.ExtStreamInf+":"):]
+	l := line[len(m3u8.ExtFrameStreamInf+":"):]
 	v, err := m3u8.NewVariant(l)
 	if err != nil {
 		t.Fatal(err)
 	}
+	v.IFrame = true
 
 	assert.Nil(t, err)
 	assert.Equal(t, "sample.url", v.URI)
