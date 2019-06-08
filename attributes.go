@@ -182,7 +182,7 @@ type VariantSegment struct {
 	Subtitle         string
 	AverageBandwidth uint32
 	ProgramID        uint32
-	Codec            string
+	Codecs           string
 	AudioCodec       string
 	Audio            string
 	Video            string
