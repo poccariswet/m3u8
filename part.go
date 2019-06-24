@@ -1,6 +1,11 @@
 package m3u8
 
-import "github.com/pkg/errors"
+import (
+	"fmt"
+	"strings"
+
+	"github.com/pkg/errors"
+)
 
 type PartInfSegment struct {
 	PartTartget float64
@@ -20,7 +25,7 @@ func NewPartInf(line string) (*PartInfSegment, error) {
 }
 
 func (ps *PartInfSegment) String() string {
-	return "PartInfSegment"
+	return fmt.Sprintf("%s:%s=%v", ExtPartInf, PARTTARGET, ps.PartTartget)
 }
 
 type PartSegment struct {
@@ -44,7 +49,7 @@ func NewPart(line string) (*PartSegment, error) {
 		return nil, errors.Wrap(err, "extractBool err")
 	}
 
-	br, err := NewByteRange(item[ByteRange])
+	br, err := NewByteRange(item[BYTERANGE])
 	if err != nil {
 		return nil, errors.Wrap(err, "new byte range")
 	}
@@ -64,5 +69,23 @@ func NewPart(line string) (*PartSegment, error) {
 }
 
 func (ps *PartSegment) String() string {
-	return "PartSegment"
+	var s []string
+
+	s = append(s, fmt.Sprintf("%s=%v", DURATION, ps.Duration))
+
+	s = append(s, fmt.Sprintf(`%s="%s"`, URI, ps.URI))
+
+	if ps.Independent {
+		s = append(s, fmt.Sprintf("%s=YES", INDEPENDENT))
+	}
+
+	if ps.ByteRange != nil {
+		s = append(s, fmt.Sprintf(`%s="%s"`, BYTERANGE, ps.ByteRange.String()))
+	}
+
+	if ps.Gap {
+		s = append(s, fmt.Sprintf("%s=YES", GAP))
+	}
+
+	return fmt.Sprintf("%s:%s", ExtPart, strings.Join(s, ","))
 }

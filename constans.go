@@ -50,7 +50,7 @@ const (
 	DURATION = "DURATION"
 
 	// ByteRange
-	ByteRange = "BYTERANGE"
+	BYTERANGE = "BYTERANGE"
 
 	// Encrypt key
 	METHOD            = "METHOD"

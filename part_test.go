@@ -16,6 +16,7 @@ func TestPartInf(t *testing.T) {
 	}
 
 	assert.Equal(t, float64(0.33334), pi.PartTartget)
+	assert.Equal(t, line, pi.String())
 }
 
 func TestPart(t *testing.T) {
@@ -31,4 +32,5 @@ func TestPart(t *testing.T) {
 	assert.True(t, part.Independent)
 	assert.Nil(t, part.ByteRange)
 	assert.True(t, part.Gap)
+	assert.Equal(t, line, part.String())
 }
